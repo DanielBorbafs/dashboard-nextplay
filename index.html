@@ -1,112 +1,89 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <!-- Boxicons CDN Link -->
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Side Navigation Bar</title>
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="logo">
-        <img src="./assets/imgs/logo_white.svg" alt="logo" id="logo_img" />
-        <div class="logo_text">Nextplay</div>
-        <i class="bx bx-menu-alt-right" id="btn"></i>
-      </div>
 
-      <div class="nav_list">
-        <ul>
-          <li>
-            <a href="#">
-              <i class="bx bx-grid-alt"></i>
-              <span class="links_name">Dashboard</span>
-            </a>
-            <span class="tooltip">Dashboard</span>
-          </li>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Side Navigation Bar</title>
+</head>
 
-          <li>
-            <a href="#">
-              <i class="bx bx-bar-chart"></i>
-              <span class="links_name">Analytics</span>
-            </a>
-            <span class="tooltip">Analytics</span>
-          </li>
-
-          <li>
-            <a href="#">
-              <i class="bx bx-chat"></i>
-              <span class="links_name Messages">Messages</span>
-            </a>
-            <span class="tooltip">Messages</span>
-          </li>
-
-          <li>
-            <a href="#">
-              <i class="bx bx-folder"></i>
-              <span class="links_name">File Manager</span>
-            </a>
-            <span class="tooltip">Files</span>
-          </li>
-
-          <li>
-            <a href="#">
-              <i class="bx bx-user"></i>
-              <span class="links_name">User</span>
-            </a>
-            <span class="tooltip">User</span>
-          </li>
-        </ul>
-
-        <div class="logout">
-          <a href="#">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-          <span class="tooltip">Log out</span>
-        </div>
-      </div>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./assets/imgs/logo_white.svg" alt="logo" id="logo_img" />
+      <div class="logo_text">Nextplay</div>
+      <i class='bx bxs-chevrons-left' id="btn"></i>
     </div>
 
-    <section class="Home_section">
+    <div class="nav_list">
       <ul>
-        <div class="card-info">
-          <span>Card</span>
-          <p>Isso é um card</p>
-          <p>teste</p>
-        </div>
+        <li>
+          <a href="#" id="active">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-bar-chart"></i>
+            <span class="links_name">Analytics</span>
+          </a>
+          <span class="tooltip">Analytics</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name Messages">Messages</span>
+          </a>
+          <span class="tooltip">Messages</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-folder"></i>
+            <span class="links_name">File Manager</span>
+          </a>
+          <span class="tooltip">Files</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name" id="btn-darkmode">Darkmode</span>
+          </a>
+          <span class="tooltip">User</span>
+        </li>
       </ul>
-    </section>
 
-    <script>
-      const sidebar = document.querySelector('.sidebar');
-      const btn = document.querySelector('#btn');
-      logo_img.onclick = function () {
-        if (!x.matches) {
-          sidebar.classList.toggle('open');
-        }
-      };
-      btn.onclick = function () {
-        if (!x.matches) {
-          sidebar.classList.remove('open');
-        }
-      };
+      <div class="logout">
+        <a href="#">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log out</span>
+        </a>
+        <span class="tooltip">Log out</span>
+      </div>
+    </div>
+  </div>
 
-      function myFunction(x) {
-        if (x.matches) {
-          // If media query matches
-          sidebar.classList.remove('open');
-        }
-      }
+  <section class="Home_section">
+    <ul>
+      <div class="card-info">
+        <span>Card</span>
+        <p>Isso é um card</p>
+        <p>teste</p>
+      </div>
+    </ul>
+  </section>
 
-      var x = window.matchMedia('(max-width: 700px)');
-      myFunction(x); // Call listener function at run time
-      x.addListener(myFunction); // Attach listener function on state changes
-    </script>
-  </body>
+  <script src="js/sidebar.js"></script>
+  <script src="js/darkmode.js"></script>
+</body>
+
 </html>

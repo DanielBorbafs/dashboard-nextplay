@@ -1,5 +1,6 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,9 @@ body {
   background: #171821;
 }
 
+
+
+
 .sidebar {
   position: fixed;
   height: 100vh;
@@ -21,6 +25,12 @@ body {
   border-right: 1px solid #8383835d;
   z-index: 99;
   transition: width 0.5s;
+}
+
+.light-mode {
+  transition: all 2100ms ease-in;
+  background-color: rgb(230, 230, 230);
+
 }
 
 .sidebar.open {
@@ -108,6 +118,10 @@ ul li a i,
   width: 110px;
   transform: translateX(-250px);
   opacity: 0;
+}
+
+#active {
+  color: #8e48ff;
 }
 
 .sidebar.open ul li a .links_name,
@@ -241,6 +255,9 @@ ul li a:hover .links_name {
   font-size: 13px;
 }
 
+
+
+
 .logout {
   position: absolute;
   bottom: 30px;
@@ -264,7 +281,7 @@ ul li a:hover .links_name {
   transition: all 0.5s ease;
 }
 
-.sidebar.open ~ .Home_section {
+.sidebar.open~.Home_section {
   left: calc(250px - 20px);
   transition: all 0.5s ease;
 }
