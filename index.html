@@ -1,25 +1,8 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <!-- Boxicons CDN Link -->
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Side Navigation Bar</title>
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="logo">
-        <img src="./assets/imgs/logo_white.svg" alt="logo" id="logo_img" />
-        <div class="logo_text">Nextplay</div>
-        <i class="bx bx-menu-alt-right" id="btn"></i>
-      </div>
 
+<<<<<<< HEAD
       <div class="nav_list">
         <ul>
           <li>
@@ -63,18 +46,96 @@
           <span class="tooltip">Log out</span>
         </div>
       </div>
+=======
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <!-- Boxicons CDN Link -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Side Navigation Bar</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./assets/imgs/logo_white.svg" alt="logo" id="logo_img" />
+      <div class="logo_text">Nextplay</div>
+      <i class='bx bxs-chevrons-left' id="btn"></i>
+>>>>>>> 39a96c371e4417db9f49990a39faf5d7f2f86313
     </div>
 
-    <section class="Home_section">
+    <div class="nav_list">
       <ul>
-        <div class="card-info">
-          <span>Card</span>
-          <p>Isso é um card</p>
-          <p>teste</p>
-        </div>
-      </ul>
-    </section>
+        <li>
+          <a href="#" id="active">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
 
+        <li>
+          <a href="#">
+            <i class="bx bx-bar-chart"></i>
+            <span class="links_name">Analytics</span>
+          </a>
+          <span class="tooltip">Analytics</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name Messages">Messages</span>
+          </a>
+          <span class="tooltip">Messages</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-folder"></i>
+            <span class="links_name">File Manager</span>
+          </a>
+          <span class="tooltip">Files</span>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="bx bx-user"></i>
+            <span class="links_name" id="btn-darkmode">Darkmode</span>
+          </a>
+          <span class="tooltip">User</span>
+        </li>
+      </ul>
+
+<<<<<<< HEAD
     <script src="./js/script.js"></script>
   </body>
 </html>
+=======
+      <div class="logout">
+        <a href="#">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log out</span>
+        </a>
+        <span class="tooltip">Log out</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="Home_section">
+    <ul>
+      <div class="card-info">
+        <span>Card</span>
+        <p>Isso é um card</p>
+        <p>teste</p>
+      </div>
+    </ul>
+  </section>
+
+  <script src="js/sidebar.js"></script>
+  <script src="js/darkmode.js"></script>
+</body>
+
+</html>
+>>>>>>> 39a96c371e4417db9f49990a39faf5d7f2f86313
