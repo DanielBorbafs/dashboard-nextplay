@@ -283,3 +283,7 @@ ul li a:hover .links_name {
   width: 500px;
   padding: 1.5rem;
 }
+
+.active {
+  color: #9f6df0;
+}
