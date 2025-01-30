@@ -323,8 +323,6 @@ ul li a:hover .links_name {
   padding: 2rem;
 }
 
-/* ========= MOBILE ========= */
-
 #table {
   margin-top: 1rem;
   width: 50vw;
@@ -348,8 +346,8 @@ ul li a:hover .links_name {
 
 /* Linha do cabeçalho */
 .table-header {
-  background-color: red;
   color: white;
+  border-bottom: 1px solid rgba(245, 222, 179, 0.226);
   display: flex;
   width: 100%;
   justify-content: space-between;
