@@ -325,12 +325,111 @@ ul li a:hover .links_name {
 
 /* ========= MOBILE ========= */
 
-@media (max-width: 468px) {
+#table {
+  margin-top: 1rem;
+  width: 50vw;
+  padding: 1.2rem;
+  width: 50vw;
+}
+
+/* Ajuste do container */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+/* Estilização básica da "tabela" */
+.responsive-table {
+  width: 100%;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+/* Linha do cabeçalho */
+.table-header {
+  background-color: red;
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+/* Linhas dos dados */
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilização das colunas */
+.col {
+  flex: 1; /* Faz com que as colunas ocupem o mesmo espaço */
+  text-align: left;
+}
+
+#porcentagem {
+  text-align: center;
+}
+
+/* Responsividade: Transformando em "cards" no mobile */
+@media (max-width: 768px) {
+  #porcentagem {
+    padding: 8px;
+    background-color: #5ac18e;
+    border: 1.5px solid green;
+    border-radius: 8px;
+  }
+
+  .produtos__title {
+    font-size: 20px;
+  }
+  .table-header {
+    display: none;
+  }
+
+  #table {
+    width: 100vw;
+  }
   .container_text > h1 {
     font-size: 24px;
   }
 
   .card_item {
     min-width: 320px;
+  }
+  .table-header {
+    display: none;
+    gap: 1rem;
+    font-size: 12px;
+  }
+
+  .table-row {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    justify-content: start;
+    align-items: start;
+  }
+
+  .col {
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    padding: 12px 0;
+    font-weight: bold;
+  }
+
+  .col::before {
+    font-weight: 400;
+    color: #f3f3f3;
+    content: attr(data-label); /* Usa o atributo data-label como rótulo */
+    display: flex;
+    margin-right: 1rem;
   }
 }
