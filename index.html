@@ -1,46 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gráfico de Barras sem Rótulos no Eixo X</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Gráfico de Barras Horizontais com Box Shadow</title>
     <style>
-      body {
-        padding: 0;
-        margin: 0;
-        background-color: #e9e9e9;
-      }
-      .container {
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .hero {
-        position: relative;
-        height: 100vh;
-      }
-
-      #bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-      }
-      .barra {
+      .bar {
         fill: steelblue;
+        filter: url(#bar-shadow); /* Aplica o filtro de sombra */
       }
-      .barra:hover {
+      .bar:hover {
         fill: orange;
+      }
+      .axis-label {
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+      }
+      .tooltip {
+        position: absolute;
+        visibility: hidden;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
       }
     </style>
   </head>
   <body>
-    <div class="container hero">
-      <h1>teste</h1>
-      teste
-      <img src="./bg.svg" alt="" id="bg" />
-    </div>
+    <h1>Preço Unitário por Categoria</h1>
+    <svg width="800" height="500">
+      <!-- Define o filtro de sombra -->
+      <defs>
+        <filter id="bar-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow
+            dx="2"
+            dy="2"
+            stdDeviation="2"
+            flood-color="rgba(0,0,0,0.5)"
+          />
+        </filter>
+      </defs>
+    </svg>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      // Dados CSV
+      const csvData = `nome,preco_unitario
+Acessórios,4893.75
+Assinaturas e Serviços,1399.86
+Cadeiras Gamer,6142.5
+Consoles,67905.0
+Jogos de Nintendo Switch,3294.0
+Jogos ps4,5615.95
+Jogos ps5,5792.95
+Notebooks,63980.0
+Pc Gamer,24367.5
+Periféricos,13810.6
+Simuladores,11340.0`;
+
+      // Parse CSV
+      const data = d3.csvParse(csvData, (d) => {
+        return {
+          nome: d.nome,
+          preco_unitario: +d.preco_unitario, // Converte para número
+        };
+      });
+
+      // Configurações do gráfico
+      const margin = { top: 50, right: 30, bottom: 70, left: 150 }; // Aumentei o left para caber os nomes
+      const width = 800 - margin.left - margin.right;
+      const height = 500 - margin.top - margin.bottom;
+
+      // Cria o SVG
+      const svg = d3
+        .select('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+
+      // Escalas
+      const y = d3
+        .scaleBand()
+        .domain(data.map((d) => d.nome))
+        .range([0, height])
+        .padding(0.1);
+
+      const x = d3
+        .scaleLinear()
+        .domain([0, d3.max(data, (d) => d.preco_unitario)])
+        .nice()
+        .range([0, width]);
+
+      // Eixos
+      svg.append('g').call(d3.axisLeft(y));
+
+      svg
+        .append('g')
+        .attr('transform', `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+      // Barras
+      svg
+        .selectAll('.bar')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('y', (d) => y(d.nome))
+        .attr('x', 0)
+        .attr('height', y.bandwidth())
+        .attr('width', (d) => x(d.preco_unitario))
+        .on('mouseover', function (event, d) {
+          d3.select(this).attr('fill', 'orange');
+          tooltip
+            .style('visibility', 'visible')
+            .html(
+              `<strong>${d.nome}</strong><br>R$ ${d.preco_unitario.toFixed(2)}`
+            );
+        })
+        .on('mousemove', function (event) {
+          tooltip
+            .style('top', `${event.pageY - 10}px`)
+            .style('left', `${event.pageX + 10}px`);
+        })
+        .on('mouseout', function () {
+          d3.select(this).attr('fill', 'steelblue');
+          tooltip.style('visibility', 'hidden');
+        });
+
+      // Tooltip
+      const tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+
+      // Rótulos dos eixos
+      svg
+        .append('text')
+        .attr(
+          'transform',
+          `translate(${width / 2},${height + margin.bottom - 10})`
+        )
+        .style('text-anchor', 'middle')
+        .text('Preço Unitário (R$)');
+
+      svg
+        .append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', -margin.left + 40)
+        .attr('x', -height / 2)
+        .style('text-anchor', 'middle')
+        .text('Categorias');
+    </script>
   </body>
 </html>
