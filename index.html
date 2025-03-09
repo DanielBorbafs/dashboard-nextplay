@@ -6,149 +6,41 @@
     <title>Gráfico de Barras sem Rótulos no Eixo X</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #e9e9e9;
+      }
+      .container {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .hero {
+        position: relative;
+        height: 100vh;
+      }
+
+      #bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+      }
       .barra {
         fill: steelblue;
       }
       .barra:hover {
         fill: orange;
       }
-      .eixo path,
-      .eixo line {
-        stroke: #ccc;
-        shape-rendering: crispEdges;
-      }
-      .eixo text {
-        fill: #333;
-        font-family: Arial, sans-serif;
-        font-size: 12px;
-      }
-      .tooltip {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 8px;
-        border-radius: 4px;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        pointer-events: none; /* Impede que o tooltip interfira com os eventos do mouse */
-        opacity: 0; /* Inicialmente invisível */
-        transition: opacity 0.2s;
-      }
     </style>
   </head>
   <body>
-    <h1>Gráfico de Barras - Preço Unitário por Categoria</h1>
-    <svg width="800" height="500" id="svg_categoria"></svg>
-    <div class="tooltip"></div>
-    <!-- Elemento do tooltip -->
-
-    <script>
-      // Configurações do gráfico
-      const largura = 800;
-      const altura = 500;
-      const margem = { top: 40, right: 30, bottom: 80, left: 100 };
-
-      // Seleciona o SVG e define suas dimensões
-      const svg = d3
-        .select('svg')
-        .attr('width', largura)
-        .attr('height', altura);
-
-      // Seleciona o tooltip
-      const tooltip = d3.select('.tooltip');
-
-      // Escalas
-      const escalaX = d3
-        .scaleBand()
-        .range([margem.left, largura - margem.right])
-        .padding(0.1); // Espaço entre as barras
-
-      const escalaY = d3
-        .scaleLinear()
-        .range([altura - margem.bottom, margem.top]);
-
-      // Eixos
-      const eixoX = d3.axisBottom(escalaX);
-      const eixoY = d3.axisLeft(escalaY);
-
-      // Carrega o arquivo CSV
-      d3.csv('dados.csv')
-        .then((dados) => {
-          // Converte os valores de preco_unitario para números
-          dados.forEach((d) => {
-            d.preco_unitario = +d.preco_unitario;
-          });
-
-          // Define os domínios das escalas
-          escalaX.domain(dados.map((d) => d.nome));
-          escalaY.domain([0, d3.max(dados, (d) => d.preco_unitario)]);
-
-          // Adiciona as barras
-          svg
-            .selectAll('.barra')
-            .data(dados)
-            .enter()
-            .append('rect')
-            .attr('class', 'barra')
-            .attr('x', (d) => escalaX(d.nome))
-            .attr('y', (d) => escalaY(d.preco_unitario))
-            .attr('width', escalaX.bandwidth())
-            .attr(
-              'height',
-              (d) => altura - margem.bottom - escalaY(d.preco_unitario)
-            )
-            .on('mouseover', function (event, d) {
-              // Mostra o tooltip
-              tooltip.transition().duration(200).style('opacity', 1);
-              tooltip
-                .html(
-                  `Categoria: ${
-                    d.nome
-                  }<br>Preço Unitário: R$ ${d.preco_unitario.toFixed(2)}`
-                )
-                .style('left', `${event.pageX + 5}px`)
-                .style('top', `${event.pageY - 28}px`);
-            })
-            .on('mouseout', function () {
-              // Oculta o tooltip
-              tooltip.transition().duration(200).style('opacity', 0);
-            });
-
-          // Adiciona o eixo X sem rótulos
-          svg
-            .append('g')
-            .attr('transform', `translate(0, ${altura - margem.bottom})`)
-            .call(eixoX)
-            .selectAll('text') // Seleciona os textos do eixo X
-            .remove(); // Remove os textos
-
-          // Adiciona o eixo Y
-          svg
-            .append('g')
-            .attr('transform', `translate(${margem.left}, 0)`)
-            .call(eixoY);
-
-          // Adiciona rótulos aos eixos
-          svg
-            .append('text')
-            .attr(
-              'transform',
-              `translate(${largura / 2}, ${altura - margem.bottom + 60})`
-            )
-            .style('text-anchor', 'middle')
-            .text('Categorias');
-
-          svg
-            .append('text')
-            .attr('transform', 'rotate(-90)')
-            .attr('y', margem.left - 50)
-            .attr('x', -(altura / 2))
-            .style('text-anchor', 'middle')
-            .text('Preço Unitário');
-        })
-        .catch((error) => {
-          console.error('Erro ao carregar o arquivo CSV:', error);
-        });
-    </script>
+    <div class="container hero">
+      <h1>teste</h1>
+      teste
+      <img src="./bg.svg" alt="" id="bg" />
+    </div>
   </body>
 </html>
