@@ -70,3 +70,14 @@ d3.csv('./data/vendas_por_mês.csv')
     console.error('Erro ao carregar o CSV:', error);
     d3.select('#valor-total').text('Erro ao carregar os dados.');
   });
+
+  // Rola suavemente para a seção correspondente ao clicar nos botões
+document.querySelectorAll('.card .btn').forEach(btn => {
+  btn.addEventListener('click', function (event) {
+      event.preventDefault();
+      const targetId = this.getAttribute('href');
+      document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});

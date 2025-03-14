@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nextplay</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+  </head>
+  <body>
+    <header class="container">
+      <img src="./imgs/logo.png" alt="Logo da empresa nextplay" class="logo" />
+      <div class="button">
+        <a href="#">Baixar dados</a>
+        <b class="top">click to download</b>
+        <b class="bottom">1.2MB .zip</b>
+      </div>
+    </header>
+    <main class="container">
+      <section id="hero__intro"  data-aos="fade-up">
+        <div class="hero__intro__text">
+          <h1 id="typed-text">Insights que Impulsionaram o Sucesso da Nextplay</h1>
+          <p>
+            Let's make your work more organize and easily using the Taskio
+            Dashboard with many of the latest featuresin managing work every
+            day.
+          </p>
+          <div class="hero__intro__insights">
+            <a href="#insights">Veja os insights</a>
+            <i class="bx bx-chevrons-down"></i>
+          </div>
+        </div>
+        <div class="hero__intro__img">
+          <img src="./imgs/hero.png" alt="" />
+        </div>
+      </section>
+      <section class="data__insights" id="insights" data-aos="fade-up">
+        <h2>O Trimestre em Números:<br><span>Como a Nextplay se Saiu?</span></h2>
+        <div class="data__insights__list">
+          <div class="data__insight__card" data-aos="fade-up-right">
+              <div class="data__insight__intro">
+                <img src="./imgs/clientes_icon.svg" alt="">
+                <span>Quantidade de clientes</span>
+              </div>
+              <h3 id="outClientes">0</h3>
+          </div>
+          <div class="data__insight__card" data-aos="fade-up">
+            <div class="data__insight__intro">
+              <img src="./imgs/money_icon.svg" alt="">
+              <span>Lucro total</span>
+            </div>
+            <h3 id="valor-total">0</h3>
+        </div>
+        <div class="data__insight__card" data-aos="fade-up-right">
+          <div class="data__insight__intro" >
+            <img src="./imgs/cash_icon.svg" alt="">
+            <span>Quantidade de vendas</span>
+          </div>
+          <h3 id="outVendas">0</h3>
+      </div>
+        </div>
+      </section>
+      <section class="chart__line">
+        <h3>Lucro mensal<br><span> Até o momento</span> </h3>
+      
+        <div class="container__grafico">
+          <div id="grafico" data-aos="fade-up"></div>
+          <div id="tooltip"></div>
+        </div>
+        
+      </section>
+      <section id="tabela-produtos" data-aos="fade-up">
+        <h3>Produtos <br><span>Mais Vendidos</span></h3>
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Produto</th>
+                    <th>Total de Vendas (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas da tabela serão preenchidas dinamicamente pelo JavaScript -->
+            </tbody>
+        </table>
+        <div id="paginacao">
+            <button id="anterior">Anterior</button>
+            <span id="info-pagina"></span>
+            <button id="proximo">Próximo</button>
+        </div>
+    </section>
+    <section id="grafico__categorias">
+      <div id="grafico_categoria"></div>
+    </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/grafico.1.js"></script>
+    <script src="js/graficoCategoria.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/tabela.js"></script>
+    <script>
+      AOS.init()
+    </script>
+  </body>
+</html>
