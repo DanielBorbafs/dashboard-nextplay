@@ -1,1 +1,1 @@
-![Apresentação do projeto](./imgs/readme.svg)
+![Apresentação do projeto](./imgs/readme.png)
